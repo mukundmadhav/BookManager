@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BookManager</string>
+    <string name="welcome_string">Welcome aboard. Book Manager is a simple Android application that let\'s users the ability to buy and sell books that might be used or unused.</string>
+</resources>
