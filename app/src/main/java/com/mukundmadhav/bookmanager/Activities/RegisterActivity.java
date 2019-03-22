@@ -129,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
                     updateNamePic(name,pickedImageUri,mAuth.getCurrentUser());
                 }
                 else {
-                    showMessage("Account Creation Failed");
+                    showMessage("Account Creation Failed" + task.getException().getMessage());
                     pbarReg.setVisibility(View.INVISIBLE);
                     btnReg.setVisibility(View.VISIBLE);
                 }

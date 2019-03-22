@@ -52,7 +52,7 @@
                 android:text="Learn More"/>
 
             <Button
-                android:id="@+id/reg_signupBtn"
+                android:id="@+id/login_signupBtn"
                 app:rippleColor="#fff"
                 android:backgroundTint="@color/colorPink"
                 app:cornerRadius="20dp"
@@ -85,33 +85,62 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:background="@drawable/rededitbut_style"
-            android:drawablePadding="10dp"
-            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
-            android:hint="Email Address"
+            android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rededitbut_style"
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+            android:drawablePadding="10dp"
+            android:hint="Email Address" />
+
         <EditText
+            android:id="@+id/login_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/rededitbut_style"
-            android:drawablePadding="10dp"
             android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
-            android:inputType="textPassword"
+            android:drawablePadding="10dp"
             android:hint="Password"
+            android:inputType="textPassword" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:text="Login"
-            app:cornerRadius="20dp"
-            app:rippleColor="#fff"
 
-            />
+            <Button
+                android:id="@+id/login_Btn"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+
+                android:layout_marginBottom="8dp"
+                android:padding="10dp"
+                android:text="Login"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="#fff" />
+
+            <ProgressBar
+                android:id="@+id/login_progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/login_Btn"
+                app:layout_constraintEnd_toEndOf="@+id/login_Btn"
+                app:layout_constraintStart_toStartOf="@+id/login_Btn"
+                app:layout_constraintTop_toTopOf="@+id/login_Btn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </LinearLayout>
 
