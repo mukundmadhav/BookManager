@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.mukundmadhav.bookmanager.Fragments.BottomNavSheet;
 import com.mukundmadhav.bookmanager.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -39,10 +41,11 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
 
         }
-//        else if(item.getItemId() == android.R.id.home) {
-//            BottomNavigationDrawerFrag bottomNavigationDrawerFrag = new BottomNavigationDrawerFrag();
-//            bottomNavigationDrawerFrag.show(getSupportFragmentManager(),bottomNavigationDrawerFrag.getTag());
-//        }
+        else if(item.getItemId() == android.R.id.home) {
+            Log.i("com.mukundmadhav.bookmanager","marked Yes");
+            BottomNavSheet bottomNavigationDrawerFrag = new BottomNavSheet();
+            bottomNavigationDrawerFrag.show(getSupportFragmentManager(),bottomNavigationDrawerFrag.getTag());
+        }
 
 
         return true;
