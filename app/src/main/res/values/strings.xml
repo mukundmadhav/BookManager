@@ -3,4 +3,7 @@
     <string name="welcome_string">Welcome aboard. Book Manager is a simple Android application that let\'s users the ability to buy and sell books that might be used or unused.</string>
     <string name="bottom_sheet_name">Mukund Madhav</string>
     <string name="bottom_sheet_email">me@mukundmadhav.com</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

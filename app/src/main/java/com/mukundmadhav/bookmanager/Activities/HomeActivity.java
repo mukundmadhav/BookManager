@@ -37,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mukundmadhav.bookmanager.Fragments.BottomNavSheet;
+import com.mukundmadhav.bookmanager.Fragments.PostsFragment;
 import com.mukundmadhav.bookmanager.Models.Book;
 import com.mukundmadhav.bookmanager.R;
 
@@ -80,7 +81,10 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
-
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, new PostsFragment())
+                .commit();
 
 
     }

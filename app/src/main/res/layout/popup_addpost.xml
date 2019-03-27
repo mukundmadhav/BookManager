@@ -47,7 +47,7 @@
         android:background="#2d2d2d"
         android:id="@+id/popup_img"
         android:layout_width="0dp"
-        android:layout_height="225dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

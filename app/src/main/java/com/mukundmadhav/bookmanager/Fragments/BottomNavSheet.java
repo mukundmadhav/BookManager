@@ -50,6 +50,10 @@ public class BottomNavSheet extends BottomSheetDialogFragment {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.nav_home :
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, new PostsFragment())
+                                .commit();
                         Toast.makeText(view.getContext(), "Nav Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_chats :
