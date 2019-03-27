@@ -60,8 +60,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         toolbar = findViewById(R.id.bottom_app_bar);
         setSupportActionBar(toolbar);
+
+
+        initPopup();
+        setupPopupImgClick();
 
         FloatingActionButton fab =  findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +80,6 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
-        initPopup();
-        setupPopupImgClick();
 
 
 
@@ -129,11 +132,11 @@ public class HomeActivity extends AppCompatActivity {
         popupAddPost.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT,Toolbar.LayoutParams.WRAP_CONTENT);
         popupAddPost.getWindow().getAttributes().gravity = Gravity.TOP;
 
-        popupChooseImg = findViewById(R.id.popup_uploadImg);
-        popupDoneBtn = findViewById(R.id.popup_doneBtn);
-        popupName = findViewById(R.id.popup_nameBook);
-        popupPrice = findViewById(R.id.popup_priceBook);
-        popup_pbar = findViewById(R.id.popup_progressBar);
+        popupChooseImg = popupAddPost.findViewById(R.id.popup_img);
+        popupName = popupAddPost.findViewById(R.id.popup_title);
+        popupDoneBtn = popupAddPost.findViewById(R.id.popup_done);
+        popupPrice = popupAddPost.findViewById(R.id.popup_desc);
+        popup_pbar = popupAddPost.findViewById(R.id.popup_pbar);
 
         //Click Listener for Done button
 

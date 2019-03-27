@@ -1,71 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:padding="20dp"
-   >
+    android:background="#fff"
+    android:layout_height="wrap_content">
 
+    <ImageView
+        android:padding="8dp"
+        android:background="#ffffff"
+        android:id="@+id/popup_userimg"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[11]" />
 
     <EditText
-        android:id="@+id/popup_nameBook"
+        android:background="@drawable/popup_edittext_style"
+        android:id="@+id/popup_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name of the book"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Name of the book"
+        app:layout_constraintEnd_toStartOf="@+id/popup_userimg"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/popup_priceBook"
+        android:background="@drawable/popup_edittext_style"
+        android:id="@+id/popup_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Price"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/popup_nameBook"
-        app:layout_constraintStart_toStartOf="@+id/popup_nameBook"
-        app:layout_constraintTop_toBottomOf="@+id/popup_nameBook" />
-
+        android:hint="Price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popup_title" />
 
     <ImageView
-        android:background="@color/colorAccent"
-        android:id="@+id/popup_uploadImg"
+        android:background="#2d2d2d"
+        android:id="@+id/popup_img"
         android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="225dp"
         android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="@+id/popup_priceBook"
-        app:layout_constraintTop_toBottomOf="@+id/popup_priceBook"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popup_desc"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[3]" />
 
     <ImageView
-        android:id="@+id/popup_doneBtn"
+        android:id="@+id/popup_done"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/circle_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/popup_uploadImg"
-        app:layout_constraintEnd_toEndOf="@+id/popup_uploadImg"
-        app:layout_constraintStart_toStartOf="@+id/popup_uploadImg"
-        app:layout_constraintTop_toBottomOf="@id/popup_uploadImg"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popup_img"
         app:srcCompat="@drawable/ic_done" />
 
     <ProgressBar
-        android:id="@+id/popup_progressBar"
+        android:padding="4dp"
+        android:visibility="invisible"
+        android:id="@+id/popup_pbar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/popup_doneBtn"
-        app:layout_constraintEnd_toEndOf="@+id/popup_doneBtn"
-        app:layout_constraintStart_toStartOf="@+id/popup_doneBtn"
-        app:layout_constraintTop_toTopOf="@+id/popup_doneBtn" />
-
+        android:layout_marginTop="0dp"
+        android:background="@drawable/circle_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_done"
+        app:layout_constraintEnd_toEndOf="@+id/popup_done"
+        app:layout_constraintStart_toStartOf="@+id/popup_done"
+        app:layout_constraintTop_toTopOf="@+id/popup_done" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
