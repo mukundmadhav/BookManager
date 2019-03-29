@@ -3,7 +3,6 @@ package com.mukundmadhav.bookmanager.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -78,6 +78,20 @@ public class PostsFragment extends androidx.fragment.app.Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Posts");
+
+        bookRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 ) {
+                    //hide bottom app bar
+                    ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+                } else if (dy < 0 ) {
+                    //show bottom app bar
+                    ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
+                }
+            }
+        });
 
         return view;
     }
