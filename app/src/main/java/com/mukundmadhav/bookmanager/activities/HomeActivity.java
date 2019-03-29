@@ -1,11 +1,4 @@
-package com.mukundmadhav.bookmanager.Activities;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+package com.mukundmadhav.bookmanager.activities;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -15,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,6 +33,13 @@ import com.mukundmadhav.bookmanager.Fragments.PostsFragment;
 import com.mukundmadhav.bookmanager.Models.Book;
 import com.mukundmadhav.bookmanager.R;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -54,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     private static final int PReqCode = 2;
-    private static final int REQUESCODE = 2;
+    private static final int REQUEST_CODE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +124,7 @@ public class HomeActivity extends AppCompatActivity {
     private void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent,REQUESCODE);
+        startActivityForResult(galleryIntent, REQUEST_CODE);
     }
 
     private void initPopup() {
@@ -248,8 +247,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item.getItemId()==R.id.app_bar_search) {
-            Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
-
+            startActivity(new Intent(this, SearchActivity.class));
         }
         else if(item.getItemId() == android.R.id.home) {
             BottomNavSheet bottomNavigationDrawerFrag = new BottomNavSheet();
@@ -263,7 +261,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == REQUESCODE && data !=null ) {
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE && data != null) {
             pickedImageUri = data.getData();
             popupChooseImg.setImageURI(pickedImageUri);
         }
