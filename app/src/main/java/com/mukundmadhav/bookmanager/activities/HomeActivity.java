@@ -247,7 +247,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item.getItemId()==R.id.app_bar_search) {
-            startActivity(new Intent(this, SearchActivity.class));
+            startActivity(new Intent(this, SearchableActivity.class));
         }
         else if(item.getItemId() == android.R.id.home) {
             BottomNavSheet bottomNavigationDrawerFrag = new BottomNavSheet();
