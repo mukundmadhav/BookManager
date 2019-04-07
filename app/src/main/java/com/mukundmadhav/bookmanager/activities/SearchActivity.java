@@ -1,10 +1,11 @@
 package com.mukundmadhav.bookmanager.activities;
 
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.Menu;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,54 +17,70 @@ import com.mukundmadhav.bookmanager.R;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
-public class SearchableActivity extends AppCompatActivity {
+public class SearchActivity extends BaseActivity {
+    ListView mListView;
     ArrayList<String> mArrayList1 = new ArrayList<>();
-    ListView searchList;
-    EditText search;
+    SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        searchList = findViewById(R.id._searchList);
-        search = findViewById(R.id._search);
+        mListView = findViewById(R.id.listView);
 
         downloadBooksNames();
+    }
 
-        search.addTextChangedListener(new TextWatcher() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
 
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        mSearchView = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
+        mSearchView.setSearchableInfo(searchableInfo);
+
+        mSearchView.setIconified(false);
+
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public boolean onQueryTextChange(String newText) {
                 ArrayList<String> mArrayList2 = new ArrayList<>();
 
                 for (int i = 0; i < mArrayList1.size(); i++) {
-                    String Name = mArrayList1.get(i);
+                    String Name = mArrayList1.get(i).toLowerCase();
                     int size = Name.length();
-                    String NameQuery = s.toString();
-                    int qSize = NameQuery.length();
+                    int qSize = newText.length();
                     if (qSize <= size && qSize > 0) {
-                        if (Name.contains(NameQuery)) {
+                        if (Name.contains(newText.toLowerCase())) {
                             mArrayList2.add(Name);
                         }
                     }
                 }
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(SearchableActivity.this, android.R.layout.simple_list_item_1, mArrayList2);
-                searchList.setAdapter(arrayAdapter);
-            }
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(SearchActivity.this, android.R.layout.simple_list_item_1, mArrayList2);
+                mListView.setAdapter(arrayAdapter);
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                return true;
             }
         });
+
+        mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                finish();
+                return false;
+            }
+        });
+
+        return true;
     }
 
     private void downloadBooksNames() {
@@ -73,6 +90,7 @@ public class SearchableActivity extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     mArrayList1.add(ds.child("title").getValue(String.class));
                 }
+                activateToolbar(true);
             }
 
             @Override
