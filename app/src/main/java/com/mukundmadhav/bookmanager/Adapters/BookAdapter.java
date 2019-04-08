@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> {
 
-    Context mContext;
-    List<Book> mData;
+    private Context mContext;
+    private List<Book> mData;
 
     public BookAdapter(Context mContext, List<Book> mData) {
         this.mContext = mContext;
@@ -53,12 +53,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView textTitle;
         ImageView imgPost, imgPostProfile;
 
-        public MyViewHolder(@NonNull View itemView) {
+        MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imgPost = itemView.findViewById(R.id.row_post_img);
