@@ -98,6 +98,7 @@ public class SearchActivity extends BaseActivity {
             @Override
             public boolean onClose() {
                 finish();
+                activateToolbar(false);
                 return false;
             }
         });

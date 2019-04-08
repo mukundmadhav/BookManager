@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.PostsFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/posts_RView"
         android:layout_width="match_parent"

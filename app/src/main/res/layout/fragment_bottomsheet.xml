@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
@@ -46,7 +46,8 @@
         android:layout_marginStart="24dp"
         android:background="@drawable/ic_account_circle_black_24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_userName" />
+        app:layout_constraintTop_toTopOf="@+id/nav_userName"
+        tools:ignore="ContentDescription" />
 
     <View
         android:id="@+id/view2"
@@ -70,6 +71,7 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/nav_Email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_userName" />
+        app:layout_constraintTop_toTopOf="@+id/nav_userName"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

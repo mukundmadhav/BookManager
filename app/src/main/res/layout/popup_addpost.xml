@@ -15,6 +15,7 @@
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
         tools:srcCompat="@tools:sample/avatars[11]" />
 
     <EditText
@@ -22,20 +23,21 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name of the book"
+        android:hint="@string/name_of_the_book"
         android:inputType="textPersonName"
+        tools:ignore="AutoFill"
         app:layout_constraintEnd_toStartOf="@+id/popup_userimg"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-
+        android:hint="@string/price"
         android:id="@+id/popup_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Price"
+        tools:ignore="AutoFill"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/popup_desc"
+        tools:ignore="ContentDescription"
         tools:srcCompat="@tools:sample/backgrounds/scenic[3]" />
 
     <ImageView
@@ -65,7 +68,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/popup_img"
-        app:srcCompat="@drawable/ic_done" />
+        app:srcCompat="@drawable/ic_done"
+        tools:ignore="ContentDescription" />
 
     <ProgressBar
         android:id="@+id/popup_pbar"
