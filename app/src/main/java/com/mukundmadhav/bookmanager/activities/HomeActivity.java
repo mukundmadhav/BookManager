@@ -44,7 +44,6 @@ import androidx.core.content.ContextCompat;
 public class HomeActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    int sarthak;
     ImageView popupChooseImg, popupDoneBtn;
     Dialog popupAddPost;
     EditText popupName, popupPrice;

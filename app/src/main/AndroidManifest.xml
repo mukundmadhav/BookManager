@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".activities.ChatActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.BookDetails"
             android:theme="@style/AppTheme" />

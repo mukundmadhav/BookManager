@@ -15,6 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mukundmadhav.bookmanager.R;
+import com.mukundmadhav.bookmanager.activities.ChatActivity;
 import com.mukundmadhav.bookmanager.activities.SettingsActivity;
 
 import androidx.annotation.NonNull;
@@ -53,7 +54,8 @@ public class BottomNavSheet extends BottomSheetDialogFragment {
                                 .commit();
                         break;
                     case R.id.nav_chats:
-                        Toast.makeText(getActivity(), "Nav Chats", Toast.LENGTH_SHORT).show();
+                        getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
+
                         break;
                     case R.id.nav_settings:
                         getActivity().startActivity(new Intent(getActivity(), SettingsActivity.class));
