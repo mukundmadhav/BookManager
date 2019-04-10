@@ -1,6 +1,7 @@
 package com.mukundmadhav.bookmanager.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mukundmadhav.bookmanager.Models.Book;
 import com.mukundmadhav.bookmanager.R;
+import com.mukundmadhav.bookmanager.activities.DetailsActivity;
 
 import java.util.List;
 
@@ -58,12 +60,28 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         TextView textTitle;
         ImageView imgPost, imgPostProfile;
 
-        MyViewHolder(@NonNull View itemView) {
+        MyViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             imgPost = itemView.findViewById(R.id.row_post_img);
             imgPostProfile = itemView.findViewById(R.id.row_postProfilePic);
             textTitle = itemView.findViewById(R.id.row_postTitle);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent detailIntent = new Intent(mContext, DetailsActivity.class);
+                    int pos = getAdapterPosition();
+                    detailIntent.putExtra("IntentTitle", mData.get(pos).getTitle());
+                    detailIntent.putExtra("IntentPic", mData.get(pos).getPicture());
+                    detailIntent.putExtra("Intentprice", mData.get(pos).getPrice());
+                    detailIntent.putExtra("IntentUserPic", mData.get(pos).getUserPic());
+                    long timestamp = (long) mData.get(pos).getTimeStamp();
+                    detailIntent.putExtra("IntentDate", timestamp);
+                    mContext.startActivity(detailIntent);
+                }
+            });
 
         }
     }
