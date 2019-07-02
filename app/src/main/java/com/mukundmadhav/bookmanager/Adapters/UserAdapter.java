@@ -1,6 +1,8 @@
 package com.mukundmadhav.bookmanager.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mukundmadhav.bookmanager.Models.User;
 import com.mukundmadhav.bookmanager.R;
+import com.mukundmadhav.bookmanager.activities.MessageActivity;
 
 import java.util.List;
 
@@ -41,7 +44,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.MyViewHolder myViewHolder, int i) {
 
-        User user = mUser.get(i);
+        final User user = mUser.get(i);
         myViewHolder.username.setText(user.getUserId());
         if(user.getUserPic().equals("default")){
             myViewHolder.Profile.setImageResource(R.mipmap.ic_launcher);
@@ -51,6 +54,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
             Glide.with(mContext).load(user.getUserPic()).into(myViewHolder.Profile);
         }
         myViewHolder.title.setText(user.getTitle());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 Intent intent = new Intent(mContext, MessageActivity.class);
+                 intent.putExtra("userId",user.getUserId());
+                 intent.putExtra("userpic",user.getUserPic());
+                 mContext.startActivity(intent);
+
+
+
+            }
+        });
 
 
     }

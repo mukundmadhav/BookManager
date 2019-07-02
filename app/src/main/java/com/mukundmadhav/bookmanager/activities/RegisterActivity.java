@@ -19,10 +19,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mukundmadhav.bookmanager.R;
+
+import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -164,6 +168,14 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 
                                 if(task.isSuccessful()) {
+
+
+                                    DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+                                    HashMap<String,Object> hashmap=new HashMap<>();
+                                    hashmap.put("userId",currentUser.getUid());
+                                    hashmap.put("name",name);
+                                    reference.child("Users").push().setValue(hashmap);
+
                                     //pic and names linked 
                                     showMessage("User Registration Successful");
                                     updateUI();

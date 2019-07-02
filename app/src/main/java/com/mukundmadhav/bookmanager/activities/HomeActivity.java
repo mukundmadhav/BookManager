@@ -50,7 +50,8 @@ public class HomeActivity extends AppCompatActivity {
     ProgressBar popup_pbar;
     Uri pickedImageUri = null;
     FirebaseUser currentUser;
-    FirebaseAuth mAuth;
+    FirebaseAuth
+            mAuth;
 
     private static final int PReqCode = 2;
     private static final int REQUEST_CODE = 2;

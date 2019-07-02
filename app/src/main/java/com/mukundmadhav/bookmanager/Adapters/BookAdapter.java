@@ -77,6 +77,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
                     detailIntent.putExtra("IntentPic", mData.get(pos).getPicture());
                     detailIntent.putExtra("Intentprice", mData.get(pos).getPrice());
                     detailIntent.putExtra("IntentUserPic", mData.get(pos).getUserPic());
+                    detailIntent.putExtra("UserId", mData.get(pos).getUserId());
                     long timestamp = (long) mData.get(pos).getTimeStamp();
                     detailIntent.putExtra("IntentDate", timestamp);
                     mContext.startActivity(detailIntent);

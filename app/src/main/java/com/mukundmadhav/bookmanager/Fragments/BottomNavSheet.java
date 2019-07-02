@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -16,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mukundmadhav.bookmanager.R;
 import com.mukundmadhav.bookmanager.activities.ChatActivity;
+import com.mukundmadhav.bookmanager.activities.MessageActivity;
 import com.mukundmadhav.bookmanager.activities.SettingsActivity;
 
 import androidx.annotation.NonNull;

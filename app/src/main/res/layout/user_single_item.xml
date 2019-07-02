@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
@@ -14,25 +15,27 @@
             android:layout_height="70dp"
             android:src="@mipmap/ic_launcher"
             />
+
         <TextView
+            android:id="@+id/item_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sarthak Mohanty"
-            android:layout_toRightOf="@+id/profile_image"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:textSize="23dp"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/item_username"/>
+            android:layout_toEndOf="@+id/profile_image"
+            android:textSize="23sp"
+            tools:text="Sarthak Mohanty" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="bookname"
-            android:layout_toRightOf="@+id/profile_image"
-            android:layout_below="@+id/item_username"
             android:id="@+id/item_bookname"
-            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_username"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:textSize="15dp"/>
+            android:layout_toEndOf="@+id/profile_image"
+            android:textSize="15sp"
+            tools:text="bookname" />
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>
