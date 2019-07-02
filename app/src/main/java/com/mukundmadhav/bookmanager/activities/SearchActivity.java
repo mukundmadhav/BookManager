@@ -11,22 +11,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mukundmadhav.bookmanager.Models.Book;
 import com.mukundmadhav.bookmanager.R;
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
-
 public class SearchActivity extends BaseActivity {
     ListView mListView;
     ArrayList<String> mArrayList1 = new ArrayList<>();
-    ArrayList<Book> mBookArrayList = new ArrayList<>();
+    ArrayList<String> mArrayList2;
     SearchView mSearchView;
 
     @Override
@@ -40,16 +39,32 @@ public class SearchActivity extends BaseActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Book book = mBookArrayList.get(position);
-                Intent intent = new Intent(SearchActivity.this, BookDetails.class);
-                intent.putExtra("picture", book.getPicture());
-                intent.putExtra("postKey", book.getPostKey());
-                intent.putExtra("price", book.getPrice());
-//                intent.putExtra("timeStamp", book.getTimeStamp().toString());
-                intent.putExtra("title", book.getTitle());
-                intent.putExtra("userId", book.getUserId());
-                intent.putExtra("userPic", book.getUserPic());
-                startActivity(intent);
+                final String Name = mArrayList2.get(position);
+
+                FirebaseDatabase.getInstance().getReference("Posts").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String PostTitle = ds.child("title").getValue(String.class);
+                            if (Name.equals(PostTitle)) {
+                                Intent intent = new Intent(SearchActivity.this, DetailsActivity.class);
+                                intent.putExtra("IntentPic", ds.child("picture").getValue(String.class));
+                                intent.putExtra("postKey", ds.child("postKey").getValue(String.class));
+                                intent.putExtra("Intentprice", ds.child("price").getValue(String.class));
+                                intent.putExtra("timeStamp", ds.child("timeStamp").getValue(Long.class));
+                                intent.putExtra("IntentTitle", ds.child("title").getValue(String.class));
+                                intent.putExtra("UserId", ds.child("userId").getValue(String.class));
+                                intent.putExtra("IntentUserPic", ds.child("userPic").getValue(String.class));
+                                startActivity(intent);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
     }
@@ -73,7 +88,7 @@ public class SearchActivity extends BaseActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                ArrayList<String> mArrayList2 = new ArrayList<>();
+                mArrayList2 = new ArrayList<>();
 
                 for (int i = 0; i < mArrayList1.size(); i++) {
                     String Name = mArrayList1.get(i).toLowerCase();
@@ -110,17 +125,7 @@ public class SearchActivity extends BaseActivity {
         FirebaseDatabase.getInstance().getReference("Posts").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Book mBook = new Book();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    mBook.setPicture(ds.child("picture").getValue(String.class));
-                    mBook.setPostKey(ds.child("postKey").getValue(String.class));
-                    mBook.setPrice(ds.child("price").getValue(String.class));
-//                    mBook.setTimeStamp(ds.child("timeStamp").getValue(String.class));
-                    mBook.setTitle(ds.child("title").getValue(String.class));
-                    mBook.setUserId(ds.child("userId").getValue(String.class));
-                    mBook.setUserPic(ds.child("userPic").getValue(String.class));
-
-                    mBookArrayList.add(mBook);
                     mArrayList1.add(ds.child("title").getValue(String.class));
                 }
                 activateToolbar(true);

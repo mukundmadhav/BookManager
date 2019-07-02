@@ -1,9 +1,6 @@
 package com.mukundmadhav.bookmanager.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +32,7 @@ public class SellingFragment extends androidx.fragment.app.Fragment {
     private List<User> mUsers;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_selling, container, false);
@@ -65,7 +62,7 @@ public class SellingFragment extends androidx.fragment.app.Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     User user = snapshot.getValue(User.class);
 
-                    if(!user.getUserId().equals(firebaseUser.getUid())){
+                    if (firebaseUser != null && user != null && !user.getUserId().equals(firebaseUser.getUid())) {
                         mUsers.add(user);
                     }
                 }

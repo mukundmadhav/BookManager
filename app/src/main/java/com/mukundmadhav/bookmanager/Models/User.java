@@ -1,5 +1,4 @@
 package com.mukundmadhav.bookmanager.Models;
-import com.google.firebase.database.ServerValue;
 public class User {
     private String title, userId, userPic;
 

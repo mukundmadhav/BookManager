@@ -22,12 +22,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder>{
-    public static final int MSG_TYPE_LEFT=0;
-    public static final int MSG_TYPE_RIGHT=1;
-    Context mContext;
-    List<Chat> mChat;
+    private static final int MSG_TYPE_LEFT=0;
+    private static final int MSG_TYPE_RIGHT=1;
+    private Context mContext;
+    private List<Chat> mChat;
 
-    FirebaseUser fuser;
+    private FirebaseUser fuser;
 
     public MessageAdapter(Context mContext, List<Chat> mChat) {
         this.mContext = mContext;

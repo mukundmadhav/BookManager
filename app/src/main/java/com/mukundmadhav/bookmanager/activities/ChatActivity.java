@@ -24,8 +24,8 @@ public class ChatActivity extends AppCompatActivity {
         TabLayout tabLayout=findViewById(R.id.tabs);
         ViewPager viewPager=findViewById(R.id.viewpager);
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new BuyingFragment(),"Buying");
-        viewPagerAdapter.addFragment(new SellingFragment(),"Selling");
+//        viewPagerAdapter.addFragment(new BuyingFragment(),"Buying");
+        viewPagerAdapter.addFragment(new SellingFragment(),"Chats");
 
         viewPager.setAdapter(viewPagerAdapter);
 
