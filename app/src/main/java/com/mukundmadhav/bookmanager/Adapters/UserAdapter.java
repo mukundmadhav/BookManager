@@ -2,7 +2,6 @@ package com.mukundmadhav.bookmanager.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,10 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
 
-    Context mContext;
-    List<User> mUser;
+    private Context mContext;
+    private List<User> mUser;
 
     public UserAdapter(Context mContext, List<User> mUser) {
         this.mContext = mContext;
@@ -40,17 +39,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
     }
 
 
-
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.MyViewHolder myViewHolder, int i) {
 
         final User user = mUser.get(i);
-        myViewHolder.username.setText(user.getUserId());
-        if(user.getUserPic().equals("default")){
+        myViewHolder.username.setText(user.getUserName());
+        if (user.getUserPic().equals("default")) {
             myViewHolder.Profile.setImageResource(R.mipmap.ic_launcher);
 
-        }
-        else{
+        } else {
             Glide.with(mContext).load(user.getUserPic()).into(myViewHolder.Profile);
         }
         myViewHolder.title.setText(user.getTitle());
@@ -58,11 +55,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent intent = new Intent(mContext, MessageActivity.class);
-                 intent.putExtra("userId",user.getUserId());
-                 intent.putExtra("userpic",user.getUserPic());
-                 mContext.startActivity(intent);
-
+                Intent intent = new Intent(mContext, MessageActivity.class);
+                intent.putExtra("userId", user.getUserId());
+                intent.putExtra("userpic", user.getUserPic());
+                intent.putExtra("username", user.getUserName());
+                mContext.startActivity(intent);
 
 
             }
@@ -77,18 +74,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView username;
-        public ImageView Profile;
-        public TextView title;
+        TextView username;
+        ImageView Profile;
+        TextView title;
 
-        public MyViewHolder(@NonNull View itemView) {
+        MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             Profile = itemView.findViewById(R.id.profile_image);
             username = itemView.findViewById(R.id.item_username);
-            title=itemView.findViewById(R.id.item_bookname);
+            title = itemView.findViewById(R.id.item_bookname);
 
         }
     }

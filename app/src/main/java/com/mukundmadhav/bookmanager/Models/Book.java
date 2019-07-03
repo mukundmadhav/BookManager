@@ -4,7 +4,7 @@ import com.google.firebase.database.ServerValue;
 
 public class Book {
 
-    private String title, price, picture, userId, userPic, postKey;
+    private String title, price, picture, userId, userPic, postKey, userName;
     private Object timeStamp;
 
 
@@ -14,7 +14,15 @@ public class Book {
         this.picture = picture;
         this.userId = userId;
         this.userPic = userPic;
-        this.timeStamp = ServerValue.TIMESTAMP;;
+        this.timeStamp = ServerValue.TIMESTAMP;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Book() {

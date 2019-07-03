@@ -1,15 +1,27 @@
 package com.mukundmadhav.bookmanager.Models;
 public class User {
-    private String title, userId, userPic;
+    private String title;
+    private String userId;
+    private String userPic;
+    private String userName;
 
-    public User(){
-
-    }
-
-    public User(String title, String userId, String userPic) {
+    public User(String title, String userId, String userPic, String userName) {
         this.title = title;
         this.userId = userId;
         this.userPic = userPic;
+        this.userName = userName;
+    }
+
+    public User() {
+
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getTitle() {

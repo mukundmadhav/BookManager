@@ -175,6 +175,8 @@ public class HomeActivity extends AppCompatActivity {
                                             currentUser.getUid(),
                                             currentUser.getPhotoUrl().toString());
 
+                                    book.setUserName(mAuth.getCurrentUser().getDisplayName());
+
                                     addPostToFirebase(book);
 
                                 }
@@ -220,7 +222,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 showMessage("Post Added Successfully");
-
 
                 popupDoneBtn.setVisibility(View.VISIBLE);
                 popup_pbar.setVisibility(View.INVISIBLE);
